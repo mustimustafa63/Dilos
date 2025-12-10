@@ -8,19 +8,19 @@
     <style>
         /* --- 1. DESIGN SYSTEM / VARIABLES --- */
         :root {
-            /* Couleurs Chaudes Basées sur le Mockup */
+            /* Couleurs Chaudes / Vives (Fidélité au Mockup) */
             --primary-love: #ff005c; /* Rose/Rouge Vif - CTA */
-            --secondary-love: #ff3388; /* Rose Vif */
+            --secondary-love: #ff3388; /* Rose Vif Accent */
             --background-dark: #1f010f; /* Fond très sombre, tirant sur le rouge */
             --text-light: #f7f7f7;
             --glass-bg: rgba(255, 255, 255, 0.08); /* Fond des cartes en Liquid Glass */
-            --shadow-intense: 0 15px 30px rgba(0, 0, 0, 0.4);
             --border-radius-lg: 20px;
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Inter', sans-serif;
+            --neon-glow: 0 0 10px var(--primary-love), 0 0 20px var(--secondary-love); /* Effet de lueur */
         }
 
-        /* --- 2. FOND ANIMÉ & GLOBAL --- */
+        /* --- 2. FOND ANIMÉ & GLOBAL (Renforcé pour le rendu) --- */
         body {
             margin: 0;
             font-family: var(--font-sans);
@@ -33,17 +33,17 @@
             z-index: 1;
         }
 
-        /* Le fond animé (Shader style) */
         .animated-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--background-dark) 0%, var(--secondary-love) 30%, var(--primary-love) 70%, var(--background-dark) 100%);
+            /* Gradient Animé en Tons Chauds */
+            background: linear-gradient(135deg, #38021c 0%, var(--secondary-love) 30%, var(--primary-love) 70%, #38021c 100%);
             background-size: 400% 400%;
             animation: gradientShift 25s ease infinite;
-            opacity: 0.6; /* Assombrir pour le contraste */
+            opacity: 0.8; 
             z-index: -1;
         }
 
@@ -53,21 +53,21 @@
             100% { background-position: 0% 50%; }
         }
         
-        /* Motifs de coeurs en filigrane (Maximalisme) */
         .heart-pattern {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff3388' fill-opacity='0.05' d='M50 85L45 80C28 64 12 49 12 35C12 21 21 12 35 12C42 12 47 16 50 21C53 16 58 12 65 12C79 12 88 21 88 35C88 49 72 64 55 80L50 85Z'/%3E%3C/svg%3E");
-            background-size: 100px 100px;
+            /* Motifs de coeurs en filigrane (Maximalisme) */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff3388' fill-opacity='0.1' d='M50 85L45 80C28 64 12 49 12 35C12 21 21 12 35 12C42 12 47 16 50 21C53 16 58 12 65 12C79 12 88 21 88 35C88 49 72 64 55 80L50 85Z'/%3E%3C/svg%3E");
+            background-size: 80px 80px;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.7;
+            opacity: 0.9;
         }
 
-        /* --- 3. NAVIGATION (MOBILE BOTTOM FIXED) --- */
+        /* --- 3. NAVIGATION (FIXED BOTTOM - MOBILE OPTIMISÉE) --- */
         #navbar {
             display: flex;
             justify-content: space-around;
@@ -77,8 +77,10 @@
             padding: 5px 0;
             /* Liquid Glass pour la barre de navigation */
             background: var(--glass-bg);
+            -webkit-backdrop-filter: blur(12px); 
             backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(255, 0, 92, 0.4); 
             z-index: 100;
         }
 
@@ -88,7 +90,7 @@
             padding: 10px 0;
             font-size: 0.8rem;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.7);
             cursor: pointer;
             transition: color 0.3s ease, transform 0.2s ease;
         }
@@ -97,9 +99,10 @@
             color: var(--text-light);
             font-weight: 700;
             border-bottom: 2px solid var(--primary-love);
+            text-shadow: 0 0 5px var(--secondary-love); 
         }
 
-        /* --- 4. SECTIONS & CARTES (LIQUID GLASS) --- */
+        /* --- 4. SECTIONS & CARTES (LIQUID GLASS + GLOW) --- */
         .section {
             padding: 80px 20px 100px 20px;
             min-height: calc(100vh - 180px);
@@ -117,28 +120,28 @@
 
         h2 {
             font-family: var(--font-serif);
-            font-size: 2.4rem;
+            font-size: 2.6rem; 
             color: var(--text-light);
-            text-shadow: 0 0 10px rgba(255, 0, 92, 0.5);
+            text-shadow: var(--neon-glow); 
             margin-bottom: 30px;
             text-align: center;
         }
 
-        /* Style de carte Liquid Glass */
         .glass-card {
             background: var(--glass-bg);
+            -webkit-backdrop-filter: blur(16px);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25); 
             border-radius: var(--border-radius-lg);
             padding: 25px;
             margin-bottom: 25px;
-            box-shadow: var(--shadow-intense);
+            box-shadow: 0 0 15px rgba(255, 0, 92, 0.4); 
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .glass-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255, 0, 92, 0.2);
+            box-shadow: 0 0 30px rgba(255, 0, 92, 0.6); 
         }
         
         .glass-card h3 {
@@ -146,6 +149,7 @@
             color: var(--secondary-love);
             font-size: 1.5rem;
             margin-top: 0;
+            text-shadow: 0 0 8px rgba(255, 0, 92, 0.5);
         }
         
         /* --- 5. COMPOSANTS SPÉCIFIQUES --- */
@@ -164,37 +168,38 @@
             font-family: var(--font-serif);
             font-size: 3.5rem;
             color: var(--text-light);
-            text-shadow: 0 0 20px var(--primary-love);
+            text-shadow: var(--neon-glow); 
             margin-bottom: 10px;
             line-height: 1.1;
         }
 
         .cta-btn {
             background: linear-gradient(90deg, var(--secondary-love) 0%, var(--primary-love) 100%);
-            color: var(--text-light);
+            color: var(--background-dark);
             border: none;
             padding: 15px 40px;
             border-radius: 50px;
             font-size: 1.15rem;
-            font-weight: 700;
+            font-weight: 900;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(255, 0, 92, 0.4);
+            box-shadow: 0 0 20px rgba(255, 0, 92, 0.8); 
             transition: all 0.3s ease;
             margin-top: 30px;
         }
 
         .cta-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(255, 0, 92, 0.6);
+            box-shadow: 0 0 30px rgba(255, 0, 92, 1);
         }
 
-        /* HIKAYEMIZ (Timeline - Minimaliste sur mobile) */
+        /* HIKAYEMIZ */
         .story-item img {
             width: 100%;
             height: 220px;
             object-fit: cover;
             border-radius: 10px;
             margin-top: 15px;
+            border: 3px solid var(--primary-love);
         }
         
         /* GALERI (Grid) */
@@ -209,9 +214,9 @@
             height: 160px;
             object-fit: cover;
             border-radius: 10px;
-            box-shadow: var(--shadow-light);
             transition: transform 0.3s ease;
-            border: 3px solid var(--secondary-love); /* Bordure pour l'impact */
+            border: 3px solid var(--secondary-love); 
+            box-shadow: 0 0 8px var(--secondary-love); 
         }
 
         .gallery-photo:hover {
@@ -219,16 +224,13 @@
             z-index: 50;
         }
         
-        /* SÖZLER (Promesses - Style Impact) */
-        #promises .glass-card {
-             border: 1px solid var(--primary-love);
-        }
-
+        /* SÖZLER */
         .promise-icon {
             color: var(--primary-love);
             font-size: 2rem;
             float: left;
             margin-right: 15px;
+            text-shadow: 0 0 10px var(--secondary-love);
         }
 
         /* DERNIÈRE SECTION (CLOSER) */
@@ -237,7 +239,7 @@
             font-size: 2rem;
             font-weight: 900;
             color: var(--text-light);
-            text-shadow: 0 0 15px var(--primary-love);
+            text-shadow: var(--neon-glow);
         }
 
         .secondary-btn {
@@ -250,10 +252,12 @@
             font-weight: 600;
             transition: all 0.3s ease;
             margin-top: 20px;
+            text-shadow: 0 0 5px var(--secondary-love);
         }
 
         .secondary-btn:hover {
             background-color: var(--primary-love);
+            color: var(--background-dark);
         }
 
     </style>
@@ -268,7 +272,6 @@
         <div class="nav-item" onclick="showSection('story', this)">Hikayemiz</div>
         <div class="nav-item" onclick="showSection('gallery', this)">Galeri</div>
         <div class="nav-item" onclick="showSection('promises', this)">Sözlerim</div>
-        
         <div class="nav-item" onclick="window.location.href='kalp_reaktor.html'">
             ❤️ Reaktör
         </div>
@@ -326,7 +329,7 @@
                 <img class="gallery-photo" src="galeri_4.jpg" alt="Photo de couple 4">
                 <img class="gallery-photo" src="galeri_5.jpg" alt="Photo de couple 5">
                 <img class="gallery-photo" src="galeri_6.jpg" alt="Photo de couple 6">
-                </div>
+            </div>
         </div>
     </section>
 
@@ -360,8 +363,10 @@
 
 
     <script>
-        // Fonction pour gérer la navigation entre les sections
+        // Fonction pour gérer la navigation entre les sections (Smooth Scroll)
         function showSection(sectionId, clickedElement) {
+            // Sauf si c'est le Réacteur Cœur, nous restons sur la page.
+
             // Cache toutes les sections
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
@@ -372,11 +377,11 @@
                 item.classList.remove('active');
             });
 
-            // Affiche la section demandée et la fait défiler
+            // Affiche la section demandée
             const targetSection = document.getElementById(sectionId);
             if (targetSection) {
                 targetSection.classList.add('active');
-                // Fait remonter la page en haut pour une expérience mobile fluide
+                // Fait remonter la page en haut 
                 window.scrollTo({
                     top: 0, 
                     behavior: 'smooth'
@@ -385,23 +390,22 @@
 
             // Active le bouton de navigation cliqué
             if (clickedElement) {
-                clickedElement.classList.add('active');
+                // S'assurer que les liens externes (Réacteur) ne sont pas marqués comme 'active'
+                if (clickedElement.getAttribute('onclick').includes('showSection')) {
+                    clickedElement.classList.add('active');
+                }
             }
         }
 
         // Initialisation: S'assurer que seule la page d'accueil est visible au début
         document.addEventListener('DOMContentLoaded', () => {
-            // Assure le bon état au démarrage
-            document.querySelector('.nav-item.active').click(); 
-
-            // Optionnel: Démarre la musique (si vous avez un fichier musique.mp3 et que vous le décommentez)
-            /*
-            const bgMusic = document.getElementById('bgMusic'); 
-            if (bgMusic) {
-                bgMusic.volume = 0.5; 
-                bgMusic.play().catch(e => console.log("Musique bloquée, attente du clic utilisateur.", e)); 
+             // Simule un clic sur le premier élément pour initialiser la vue
+            const firstNavItem = document.querySelector('.nav-item');
+            if(firstNavItem && firstNavItem.getAttribute('onclick').includes('showSection')) {
+                 showSection('home', firstNavItem);
+            } else {
+                 document.getElementById('home').classList.add('active');
             }
-            */
         });
     </script>
 </body>
