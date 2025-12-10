@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sadece Dilara'ya | Sonsuz Aşk ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Sacramento&display=swap" rel="stylesheet">
     <style>
-        /* --- 1. DESIGN SYSTEM / VARIABLES --- */
+        /* --- 1. DESIGN SYSTEM / VARIABLES (Vieux Romantisme Moderne) --- */
         :root {
-            /* Couleurs Chaudes / Vives (Fidélité au Mockup) */
-            --primary-love: #ff005c; /* Rose/Rouge Vif - CTA */
-            --secondary-love: #ff3388; /* Rose Vif Accent */
-            --background-dark: #1f010f; /* Fond très sombre, tirant sur le rouge */
-            --text-light: #f7f7f7;
-            --glass-bg: rgba(255, 255, 255, 0.08); /* Fond des cartes en Liquid Glass */
-            --border-radius-lg: 20px;
+            --primary-love: #6B0000; /* Rouge Bordeaux Profond */
+            --secondary-love: #E0C49F; /* Or Pâle / Champagne */
+            --background-dark: #333333; /* Gris Ardoise Foncée */
+            --text-light: #F0F0F0;
+            --glass-bg: rgba(224, 196, 159, 0.1); /* Verre teinté Champagne */
+            --border-radius-lg: 10px;
             --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Inter', sans-serif;
-            --neon-glow: 0 0 10px var(--primary-love), 0 0 20px var(--secondary-love); /* Effet de lueur */
+            --font-script: 'Sacramento', cursive;
+            --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.5);
+            --glow-soft: 0 0 10px var(--secondary-love), 0 0 5px var(--primary-love);
         }
 
-        /* --- 2. FOND ANIMÉ & GLOBAL (Renforcé pour le rendu) --- */
+        /* --- 2. FOND ET GLOBAL --- */
         body {
             margin: 0;
-            font-family: var(--font-sans);
+            font-family: var(--font-serif);
             color: var(--text-light);
             background-color: var(--background-dark);
             line-height: 1.6;
@@ -39,35 +39,35 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Gradient Animé en Tons Chauds */
-            background: linear-gradient(135deg, #38021c 0%, var(--secondary-love) 30%, var(--primary-love) 70%, #38021c 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 25s ease infinite;
-            opacity: 0.8; 
+            /* Gradient chaud et profond (simulant le velours/la bougie) */
+            background: linear-gradient(180deg, #331111 0%, var(--background-dark) 50%, #331111 100%);
+            background-size: 100% 400%;
+            animation: gradientShift 40s ease infinite;
+            opacity: 0.9; 
             z-index: -1;
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% { background-position: 0% 0%; }
+            50% { background-position: 0% 100%; }
+            100% { background-position: 0% 0%; }
         }
         
+        /* Pattern subtil (Simulant une texture de papier ancien) */
         .heart-pattern {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            /* Motifs de coeurs en filigrane (Maximalisme) */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff3388' fill-opacity='0.1' d='M50 85L45 80C28 64 12 49 12 35C12 21 21 12 35 12C42 12 47 16 50 21C53 16 58 12 65 12C79 12 88 21 88 35C88 49 72 64 55 80L50 85Z'/%3E%3C/svg%3E");
-            background-size: 80px 80px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 100 100'%3E%3Cpath fill='%23E0C49F' fill-opacity='0.1' d='M50 85L45 80C28 64 12 49 12 35C12 21 21 12 35 12C42 12 47 16 50 21C53 16 58 12 65 12C79 12 88 21 88 35C88 49 72 64 55 80L50 85Z'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.9;
+            opacity: 0.7;
         }
 
-        /* --- 3. NAVIGATION (FIXED BOTTOM - MOBILE OPTIMISÉE) --- */
+        /* --- 3. NAVIGATION (FIXED BOTTOM) --- */
         #navbar {
             display: flex;
             justify-content: space-around;
@@ -75,12 +75,12 @@
             bottom: 0;
             width: 100%;
             padding: 5px 0;
-            /* Liquid Glass pour la barre de navigation */
+            /* Liquid Glass teinté */
             background: var(--glass-bg);
-            -webkit-backdrop-filter: blur(12px); 
-            backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 20px rgba(255, 0, 92, 0.4); 
+            -webkit-backdrop-filter: blur(8px); 
+            backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
             z-index: 100;
         }
 
@@ -88,7 +88,7 @@
             flex-grow: 1;
             text-align: center;
             padding: 10px 0;
-            font-size: 0.8rem;
+            font-size: 0.75rem; /* Réduit un peu pour 6 onglets */
             font-weight: 600;
             color: rgba(255, 255, 255, 0.7);
             cursor: pointer;
@@ -96,13 +96,13 @@
         }
 
         .nav-item.active {
-            color: var(--text-light);
+            color: var(--secondary-love);
             font-weight: 700;
-            border-bottom: 2px solid var(--primary-love);
+            border-bottom: 2px solid var(--secondary-love);
             text-shadow: 0 0 5px var(--secondary-love); 
         }
 
-        /* --- 4. SECTIONS & CARTES (LIQUID GLASS + GLOW) --- */
+        /* --- 4. SECTIONS & CARTES (Velours/Parchemin) --- */
         .section {
             padding: 80px 20px 100px 20px;
             min-height: calc(100vh - 180px);
@@ -119,29 +119,29 @@
         }
 
         h2 {
-            font-family: var(--font-serif);
-            font-size: 2.6rem; 
-            color: var(--text-light);
-            text-shadow: var(--neon-glow); 
+            font-family: var(--font-script);
+            font-size: 3.5rem; 
+            color: var(--secondary-love);
+            text-shadow: var(--glow-soft); 
             margin-bottom: 30px;
             text-align: center;
         }
 
         .glass-card {
-            background: var(--glass-bg);
-            -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.25); 
+            background: rgba(107, 0, 0, 0.4); /* Bordeaux translucide (Velours) */
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--secondary-love); /* Bordure Or/Champagne */
             border-radius: var(--border-radius-lg);
             padding: 25px;
             margin-bottom: 25px;
-            box-shadow: 0 0 15px rgba(255, 0, 92, 0.4); 
+            box-shadow: var(--shadow-soft); 
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 30px rgba(255, 0, 92, 0.6); 
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(224, 196, 159, 0.3); /* Lueur au survol */
         }
         
         .glass-card h3 {
@@ -149,7 +149,7 @@
             color: var(--secondary-love);
             font-size: 1.5rem;
             margin-top: 0;
-            text-shadow: 0 0 8px rgba(255, 0, 92, 0.5);
+            text-shadow: 0 0 5px var(--secondary-love);
         }
         
         /* --- 5. COMPOSANTS SPÉCIFIQUES --- */
@@ -161,103 +161,65 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding-top: 40vh;
+            padding-top: 35vh; 
         }
 
         #home-title {
-            font-family: var(--font-serif);
-            font-size: 3.5rem;
-            color: var(--text-light);
-            text-shadow: var(--neon-glow); 
-            margin-bottom: 10px;
+            font-family: var(--font-script);
+            font-size: 4rem;
+            color: var(--secondary-love);
+            text-shadow: var(--glow-soft); 
+            margin-bottom: 5px;
             line-height: 1.1;
         }
-
+        
         .cta-btn {
-            background: linear-gradient(90deg, var(--secondary-love) 0%, var(--primary-love) 100%);
-            color: var(--background-dark);
-            border: none;
-            padding: 15px 40px;
+            background-color: var(--primary-love);
+            color: var(--secondary-love); 
+            border: 2px solid var(--secondary-love);
+            padding: 12px 30px;
             border-radius: 50px;
-            font-size: 1.15rem;
-            font-weight: 900;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 0, 92, 0.8); 
+            box-shadow: var(--glow-soft); 
             transition: all 0.3s ease;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         .cta-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 0, 92, 1);
+            background-color: var(--secondary-love);
+            color: var(--primary-love);
         }
 
         /* HIKAYEMIZ */
         .story-item img {
             width: 100%;
-            height: 220px;
+            height: 200px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 5px;
             margin-top: 15px;
-            border: 3px solid var(--primary-love);
-        }
-        
-        /* GALERI (Grid) */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 15px;
-        }
-
-        .gallery-photo {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
             border: 3px solid var(--secondary-love); 
-            box-shadow: 0 0 8px var(--secondary-love); 
         }
 
-        .gallery-photo:hover {
-            transform: scale(1.08);
-            z-index: 50;
-        }
-        
-        /* SÖZLER */
-        .promise-icon {
-            color: var(--primary-love);
-            font-size: 2rem;
-            float: left;
-            margin-right: 15px;
-            text-shadow: 0 0 10px var(--secondary-love);
-        }
-
-        /* DERNIÈRE SECTION (CLOSER) */
-        #closer-message {
+        /* COMPTEUR DE JOURS (Zaman Sayacı) */
+        #days-since {
             font-family: var(--font-serif);
-            font-size: 2rem;
+            font-size: 4rem; 
             font-weight: 900;
-            color: var(--text-light);
-            text-shadow: var(--neon-glow);
-        }
-
-        .secondary-btn {
-            background-color: transparent;
-            color: var(--text-light);
-            border: 2px solid var(--primary-love);
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            color: var(--secondary-love);
+            text-shadow: 0 0 15px var(--secondary-love); 
             margin-top: 20px;
-            text-shadow: 0 0 5px var(--secondary-love);
+            margin-bottom: 20px;
+            display: block;
+            line-height: 1;
         }
-
-        .secondary-btn:hover {
-            background-color: var(--primary-love);
-            color: var(--background-dark);
+        #counter-label {
+            font-family: var(--font-script);
+            font-size: 2.5rem;
+            color: var(--secondary-love);
+            margin-bottom: 10px;
         }
 
     </style>
@@ -270,6 +232,7 @@
     <nav id="navbar">
         <div class="nav-item active" onclick="showSection('home', this)">Ana Sayfa</div>
         <div class="nav-item" onclick="showSection('story', this)">Hikayemiz</div>
+        <div class="nav-item" onclick="showSection('timer', this)">Zaman Sayacı</div> 
         <div class="nav-item" onclick="showSection('gallery', this)">Galeri</div>
         <div class="nav-item" onclick="showSection('promises', this)">Sözlerim</div>
         <div class="nav-item" onclick="window.location.href='kalp_reaktor.html'">
@@ -278,134 +241,146 @@
     </nav>
 
     <section id="home" class="section active">
-        <h1 id="home-title">Sadece Sensin, Dilara'm</h1>
-        <p style="font-size: 1.2rem; font-weight: 300;">Bu site, senin için kalbimde büyüyen sonsuz aşkın bir yansımasıdır.</p>
-        <button class="cta-btn" onclick="showSection('story', document.querySelector('.nav-item:nth-child(2)'))">Hikayemizi Keşfet ❤️</button>
+        <h1 id="home-title">Sevgili Dilara'm</h1>
+        <p style="font-size: 1.3rem; font-weight: 400; font-family: var(--font-serif);">Kalbimdeki en güzel şiirin adı sensin.</p>
+        <button class="cta-btn" onclick="showSection('story', document.querySelector('.nav-item:nth-child(2)'))">Hikayemizi Keşfet 💌</button>
     </section>
 
     <section id="story" class="section">
-        <h2>💖 Hikayemizin Videosu</h2>
+        <h2>Hikayemizin Videosu</h2>
         
         <div class="glass-card" style="padding: 15px; margin-bottom: 30px;">
             <div style="position: relative; width: 100%; padding-top: 56.25%;"> 
                 <iframe 
-                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 10px;"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 5px;"
                     src="https://www.youtube.com/embed/NHTrguAP2Vs" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
                 </iframe>
             </div>
-            <p style="text-align: center; margin-top: 15px; font-style: italic; color: rgba(255, 255, 255, 0.8);">Bu video, kelimelerin yetersiz kaldığı anlarımızı anlatıyor.</p>
+            <p style="text-align: center; margin-top: 15px; font-style: italic; color: var(--secondary-love);">Bu video, kelimelerin yetersiz kaldığı anlarımızı anlatıyor.</p>
         </div>
 
         <div class="glass-card story-item">
-            <h3>İlk Bakış: Bütün Hayatımı Değiştiren An</h3>
-            <p>Seni ilk gördüğüm anı asla unutmayacağım. O an, tüm kâinatın sadece senin etrafında döndüğünü hissettim. İşte o zaman, kaderimiz mühürlendi.</p>
-            <img class="story-image" src="hikaye_1.jpg" alt="Photo du premier moment">
+            <h3>İlk Buluşmamız</h3>
+            <p>Seni ilk gördüğüm an, zamanın durduğu andı. O günden beri her şeyin anlamı değişti.</p>
         </div>
 
-        <div class="glass-card story-item">
-            <h3>İlk Kahkahamız: ...tarihinde</h3>
-            <p>Birlikte geçirdiğimiz her an değerli, ama o ilk büyük kahkahamız benim için bir dönüm noktasıydı. O gün, mutluluğun sadece seninle mümkün olduğunu anladım.</p>
-            <img class="story-image" src="hikaye_2.jpg" alt="Photo de rire">
-        </div>
-        
         <div class="glass-card story-item">
             <h3>Sonsuza Giden Yolculuk</h3>
-            <p>Her zorlukta el ele, her başarıda yan yana. Bizim hikayemiz sadece başladı. Bundan sonraki her bölümü birlikte yazacağız.</p>
+            <p>Her zorlukta el ele, her başarıda yan yana. Bizim hikayemiz sadece başladı.</p>
         </div>
     </section>
 
+    <section id="timer" class="section">
+        <h2>Zaman Sayacı</h2>
+        <div class="glass-card" style="text-align: center; padding: 40px;">
+            <p id="counter-label">Birlikte Geçirdiğimiz Gün Sayısı:</p>
+            <span id="days-since">0</span>
+            <p style="font-size: 1.2rem; color: var(--secondary-love); margin-top: 20px;">
+                Her geçen gün, aşkımız daha da derinleşiyor.
+            </p>
+        </div>
+        <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">(Başlangıç Tarihi: 13 Kasım 2024)</p>
+    </section>
+
     <section id="gallery" class="section">
-        <h2>📸 En Değerli Anılarımız</h2>
+        <h2>En Değerli Anılarımız</h2>
         <div class="glass-card">
-            <p style="text-align: center; margin-bottom: 20px;">Gözlerimdeki en güzel kareler...</p>
+            <p style="text-align: center; margin-bottom: 20px; color: var(--secondary-love);">Gözlerimdeki en güzel kareler...</p>
             
             <div class="photo-grid">
                 <img class="gallery-photo" src="galeri_1.jpg" alt="Photo de couple 1">
                 <img class="gallery-photo" src="galeri_2.jpg" alt="Photo de couple 2">
                 <img class="gallery-photo" src="galeri_3.jpg" alt="Photo de couple 3">
                 <img class="gallery-photo" src="galeri_4.jpg" alt="Photo de couple 4">
-                <img class="gallery-photo" src="galeri_5.jpg" alt="Photo de couple 5">
-                <img class="gallery-photo" src="galeri_6.jpg" alt="Photo de couple 6">
             </div>
         </div>
     </section>
 
     <section id="promises" class="section">
-        <h2>💍 Mustafa'nın Sana Sözleri</h2>
+        <h2>Mustafa'nın Sana Sözleri</h2>
         
         <div class="glass-card">
-            <h3><span class="promise-icon">👂</span> Seni Hep Dinleyeceğim</h3>
-            <p>Sevinçte ve kederde, seni ilk dinleyecek kişi ben olacağım. Yargılamadan, sadece destek olmak için.</p>
+            <h3>Seni Sonsuza Dek Seveceğim</h3>
+            <p>Bu kalbin sonsuza dek sadece sana ait olacağına, seni ilk günden daha çok seveceğime yemin ederim.</p>
         </div>
 
         <div class="glass-card">
-            <h3><span class="promise-icon">✨</span> Hayallerini Gerçekleştireceğiz</h3>
+            <h3>Hayallerini Gerçekleştireceğiz</h3>
             <p>Bütün hayallerinin arkasında dağ gibi duracağıma, her adımı birlikte atacağımıza söz veriyorum.</p>
-        </div>
-        
-        <div class="glass-card">
-            <h3><span class="promise-icon">♾️</span> Sonsuza Dek Seveceğim</h3>
-            <p>Bu kalbin sonsuza dek sadece sana ait olacağına, seni ilk günden daha çok seveceğime yemin ederim. Benim Güzel Dilara'm.</p>
         </div>
     </section>
     
     <section id="closer" class="section">
-        <h2>Sonsuz Aşk</h2>
-        <div class="glass-card" style="padding: 40px;">
-            <p id="closer-message">Seni seçtiğim için değil, sen benim seçimim olduğun için şanslıyım.</p>
-            <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.7);">Bu küçük site, sana olan duygularımın sadece dijital bir kanıtı. Kalbimdeki asıl site çok daha büyük.</p>
-            <button class="secondary-btn">Mustafa ❤️ Dilara</button>
+        <h2>Seninle Her Şey Güzel</h2>
+        <div class="glass-card" style="padding: 40px; text-align: center;">
+            <p style="font-family: var(--font-script); font-size: 2.5rem; color: var(--secondary-love);">Sen benim en güzel rüyamsın.</p>
+            <p style="font-size: 1rem; color: var(--text-light); opacity: 0.8;">Mustafa ❤️ Dilara</p>
         </div>
     </section>
 
 
     <script>
-        // Fonction pour gérer la navigation entre les sections (Smooth Scroll)
+        // --- LOGIQUE DE NAVIGATION ---
         function showSection(sectionId, clickedElement) {
-            // Sauf si c'est le Réacteur Cœur, nous restons sur la page.
-
-            // Cache toutes les sections
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
             
-            // Désactive tous les boutons de navigation
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
 
-            // Affiche la section demandée
             const targetSection = document.getElementById(sectionId);
             if (targetSection) {
                 targetSection.classList.add('active');
-                // Fait remonter la page en haut 
+                // FIX pour le défilement au sommet
                 window.scrollTo({
                     top: 0, 
                     behavior: 'smooth'
                 });
             }
 
-            // Active le bouton de navigation cliqué
-            if (clickedElement) {
-                // S'assurer que les liens externes (Réacteur) ne sont pas marqués comme 'active'
-                if (clickedElement.getAttribute('onclick').includes('showSection')) {
-                    clickedElement.classList.add('active');
-                }
+            if (clickedElement && clickedElement.getAttribute('onclick').includes('showSection')) {
+                clickedElement.classList.add('active');
+            }
+        }
+        
+        // --- LOGIQUE DU COMPTEUR DE JOURS ---
+        function updateDaysCounter() {
+            // Date de rencontre : 13 novembre 2024
+            const meetingDate = new Date('2024-11-13T00:00:00'); 
+            const now = new Date();
+            
+            // Calculer la différence en millisecondes
+            const diffTime = Math.abs(now.getTime() - meetingDate.getTime());
+            
+            // Convertir les millisecondes en jours
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+            
+            // Mettre à jour l'élément HTML
+            const daysElement = document.getElementById('days-since');
+            if (daysElement) {
+                daysElement.textContent = diffDays;
             }
         }
 
-        // Initialisation: S'assurer que seule la page d'accueil est visible au début
+
+        // --- DÉMARRAGE DU SITE ---
         document.addEventListener('DOMContentLoaded', () => {
-             // Simule un clic sur le premier élément pour initialiser la vue
+             // Initialise la page d'accueil
             const firstNavItem = document.querySelector('.nav-item');
-            if(firstNavItem && firstNavItem.getAttribute('onclick').includes('showSection')) {
+            if(firstNavItem) {
                  showSection('home', firstNavItem);
-            } else {
-                 document.getElementById('home').classList.add('active');
             }
+            
+            // Démarre le compteur immédiatement
+            updateDaysCounter();
+            
+            // Met à jour le compteur toutes les heures (ou 60 minutes) pour la précision
+            setInterval(updateDaysCounter, 1000 * 60 * 60); 
         });
     </script>
 </body>
