@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustafa Dilaray'i Ne Kadar Seviyor? 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Variables CSS pour un thème facile à modifier */
+        :root {
+            --primary-color: #ff6f91; /* Rose principal */
+            --secondary-color: #ff9a8b; /* Rose secondaire */
+            --background-color: #fcf4f6; /* Fond très clair */
+            --text-color: #333;
+            --light-text-color: #666;
+            --success-color: #4CAF50; /* Vert pour succès */
+            --error-color: #f44336;   /* Rouge pour erreur */
+            --border-radius: 15px;
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, var(--background-color) 0%, #ffeaf0 100%);
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            overflow: hidden; /* Pour la pluie de coeurs */
+            position: relative;
+        }
+
+        .card-container {
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            padding: 30px;
+            margin: 20px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 2; /* Au-dessus des coeurs */
+            transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        #promptMessage {
+            font-size: 1.1rem;
+            color: var(--light-text-color);
+            min-height: 25px; /* Pour éviter le saut */
+            margin-bottom: 20px;
+            opacity: 0; /* Caché au début */
+            animation: fadeIn 0.8s forwards 0.5s; /* Apparaît après la carte */
+        }
+
+        .choices {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .choice-btn {
+            background-color: #f0f0f0;
+            color: var(--text-color);
+            border: none;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .choice-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 6px 15px rgba(var(--primary-color), 0.3);
+        }
+        
+        .choice-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Effets pour feedback */
+        .choice-btn.correct {
+            background-color: var(--success-color);
+            color: white;
+            box-shadow: var(--shadow-medium);
+            animation: pulseGreen 0.6s ease-out;
+        }
+
+        .choice-btn.incorrect {
+            background-color: var(--error-color);
+            color: white;
+            box-shadow: var(--shadow-medium);
+            animation: shake 0.5s;
+        }
+
+        /* Indicateur de progression */
+        #progressBarContainer {
+            width: 80%;
+            height: 8px;
+            background-color: #eee;
+            border-radius: 5px;
+            margin: 20px auto 0;
+            overflow: hidden;
+        }
+
+        #progressBar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            transition: width 0.4s ease-out;
+        }
+
+        /* Contenu final */
+        #finalContent {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+            animation: fadeInScale 1s forwards;
+            position: relative;
+            z-index: 2;
+        }
+
+        #finalMessage {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        #couplePhoto {
+            width: 90%;
+            max-width: 350px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            border: 5px solid white;
+            animation: fadeInScale 1.2s forwards 0.3s;
+        }
+        
+        #countdownText {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-top: 20px;
+            font-weight: 600;
+            animation: pulseInfinite 1.5s infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulseGreen {
+            0% { transform: scale(1); background-color: var(--success-color); }
+            50% { transform: scale(1.03); background-color: var(--success-color); }
+            100% { transform: scale(1); background-color: var(--success-color); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+
+        @keyframes pulseInfinite {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Coeurs de confetti plus jolis */
+        .heart {
+            position: absolute;
+            top: -20px;
+            font-size: clamp(1.5rem, 3vw, 2.5rem); /* Taille adaptative */
+            color: var(--primary-color);
+            pointer-events: none;
+            opacity: 0;
+            animation: fallHeart 4s linear forwards;
+            z-index: 1;
+        }
+
+        @keyframes fallHeart {
+            0% { transform: translateY(-20px) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 1; transform: translateY(0px) rotate(30deg) scale(1); }
+            100% { transform: translateY(100vh) rotate(360deg) scale(0.6); opacity: 0; }
+        }
+
+        /* Media Queries pour l'adaptation mobile */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5rem; }
+            #promptMessage { font-size: 1rem; }
+            .choice-btn { font-size: 1rem; padding: 12px 15px; }
+            #finalMessage { font-size: 2rem; }
+            .card-container { padding: 20px; margin: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container" id="mainContainer">
+        <h1>Mustafa Dilaray'i ne kadar seviyor?</h1>
+        
+        <p id="promptMessage">Bakalım doğru cevabı bulabilecek misin? 👇</p>
+
+        <div class="choices" id="choiceButtons">
+            </div>
+
+        <div id="progressBarContainer">
+            <div id="progressBar"></div>
+        </div>
+    </div>
+
+    <div id="finalContent">
+        <div id="finalMessage"></div>
+        <img id="couplePhoto" src="nous.jpg" alt="Nous deux" onerror="this.style.display='none'">
+        <p id="countdownText"></p>
+    </div>
+
+    <script>
+        const loveLevels = [
+            "Birazcık seviyor.",
+            "Çok seviyor.",
+            "Dünyalar kadar seviyor.",
+            "Kelimelere dökemeyecek kadar seviyor.",
+            "Sonsuza dek, her şeyden çok seviyor! ❤️"
+        ];
+
+        // Options fausses (elles seront mélangées avec la bonne)
+        const incorrectOptions = [
+            "Hiç sevmiyor.",
+            "Sadece arkadaş olarak seviyor.",
+            "Normal seviyor.",
+            "Biraz fena değil.",
+            "Arada sırada seviyor.",
+            "Emin değilim."
+        ];
+        
+        const mainQuestion = "Mustafa Dilaray'i ne kadar seviyor?";
+        const mainContainer = document.getElementById('mainContainer');
+        const finalContent = document.getElementById('finalContent');
+        const finalMessageDiv = document.getElementById('finalMessage');
+        const choiceButtonsDiv = document.getElementById('choiceButtons');
+        const promptMessage = document.getElementById('promptMessage');
+        const progressBar = document.getElementById('progressBar');
+        const countdownText = document.getElementById('countdownText');
+        // const bgMusic = document.getElementById('bgMusic'); // Pour la musique
+
+        let currentLevel = 0;
+        const MAX_LEVEL = loveLevels.length - 1;
+        const choicesPerLevel = 3; // Nombre de boutons affichés à chaque niveau
+
+        // --- Fonctions de base ---
+
+        function renderChoices() {
+            choiceButtonsDiv.innerHTML = ''; // Vide les boutons précédents
+            promptMessage.innerText = `Seviye ${currentLevel + 1}/${loveLevels.length}. Doğru cevabı bul!`;
+
+            const correctText = loveLevels[currentLevel];
+            let allTexts = [correctText];
+
+            // Ajoute des options incorrectes uniques pour ce niveau
+            const availableIncorrects = [...incorrectOptions];
+            for (let i = 0; i < choicesPerLevel - 1; i++) {
+                if (availableIncorrects.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * availableIncorrects.length);
+                    allTexts.push(availableIncorrects.splice(randomIndex, 1)[0]);
+                }
+            }
+            
+            shuffleArray(allTexts);
+
+            allTexts.forEach(text => {
+                const button = document.createElement('button');
+                button.classList.add('choice-btn');
+                button.innerText = text;
+
+                if (text === correctText) {
+                    button.onclick = () => handleCorrectChoice(button);
+                    button.id = 'correctBtn'; 
+                } else {
+                    button.onclick = () => handleIncorrectChoice(button);
+                }
+                choiceButtonsDiv.appendChild(button);
+            });
+            
+            updateProgressBar();
+            // Petite animation du bouton correct pour l'inciter (uniquement si pas au max)
+            if (currentLevel < MAX_LEVEL) {
+                 setTimeout(() => {
+                    const correctBtn = document.getElementById('correctBtn');
+                    if(correctBtn) {
+                        correctBtn.style.backgroundColor = varColor('--secondary-color');
+                        correctBtn.style.color = 'white';
+                        correctBtn.style.transform = 'scale(1.02)';
+                        setTimeout(() => {
+                             correctBtn.style.backgroundColor = '#f0f0f0';
+                             correctBtn.style.color = varColor('--text-color');
+                             correctBtn.style.transform = 'scale(1)';
+                        }, 300);
+                    }
+                }, 500);
+            }
+        }
+
+        // --- Gestion des clics ---
+
+        function handleCorrectChoice(button) {
+            button.classList.add('correct');
+            button.onclick = null; // Désactive le bouton
+
+            setTimeout(() => {
+                currentLevel++;
+                if (currentLevel > MAX_LEVEL) {
+                    showFinalContent();
+                } else {
+                    promptMessage.innerText = `Harika! Ama daha fazlası var...`;
+                    renderChoices(); // Passe au niveau suivant
+                }
+            }, 700);
+        }
+
+        function handleIncorrectChoice(button) {
+            button.classList.add('incorrect');
+            button.innerText = "YANLIŞ! 😞"; // Feedback visuel
+
+            setTimeout(() => {
+                button.classList.remove('incorrect');
+                // Réinitialise le texte du bouton ou le mélange à nouveau si nécessaire
+                renderChoices(); 
+            }, 800);
+        }
+
+        function showFinalContent() {
+            mainContainer.style.opacity = 0;
+            mainContainer.style.transform = 'translateY(-20px)';
+            
+            setTimeout(() => {
+                mainContainer.style.display = 'none';
+                finalContent.style.display = 'flex';
+                startCountdown(3); // Compte à rebours avant la révélation de la photo
+            }, 500); // Temps pour l'animation de disparition de la carte
+
+            // Optionnel: Jouer la musique à la fin si elle est configurée
+            // if (bgMusic) {
+            //     bgMusic.pause();
+            //     bgMusic.currentTime = 0;
+            // }
+        }
+
+        function startCountdown(seconds) {
+            finalMessageDiv.innerText = `DOĞRU CEVAP! ${loveLevels[MAX_LEVEL]}`;
+            couplePhoto.style.display = 'none'; // Cache la photo pendant le compte à rebours
+
+            let count = seconds;
+            countdownText.innerText = `Fotoğraf ${count} saniye içinde yüklenecek...`;
+
+            const countdownInterval = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownText.innerText = `Fotoğraf ${count} saniye içinde yüklenecek...`;
+                } else {
+                    clearInterval(countdownInterval);
+                    countdownText.style.display = 'none';
+                    couplePhoto.style.display = 'block'; // Affiche la photo
+                    createHearts(); // Lance la pluie de coeurs
+                }
+            }, 1000);
+        }
+
+        // --- Fonctions utilitaires ---
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function updateProgressBar() {
+            const progress = ((currentLevel + 1) / loveLevels.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+        
+        function createHearts() {
+            const heartInterval = setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + "vw"; // Position X aléatoire
+                heart.style.animationDuration = Math.random() * 2 + 3 + "s"; // Durée de 3 à 5 secondes
+                document.body.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 4000); // Supprime le coeur après son animation
+            }, 150); // Toutes les 150ms
+            
+            // Arrête la pluie de coeurs après un certain temps (ex: 15 secondes)
+            setTimeout(() => clearInterval(heartInterval), 15000); 
+        }
+
+        // Aide pour récupérer les couleurs des variables CSS
+        function varColor(name) {
+            return getComputedStyle(document.documentElement).getPropertyValue(name);
+        }
+
+        // Initialisation au chargement
+        window.onload = () => {
+            renderChoices();
+            // Optionnel: Jouer la musique automatiquement (peut être bloqué par les navigateurs)
+            // if (bgMusic) {
+            //     bgMusic.volume = 0.5; // Ajuster le volume
+            //     bgMusic.play().catch(e => console.log("La musique n'a pas pu démarrer automatiquement:", e));
+            // }
+        };
+    </script>
+
+</body>
+</html>
